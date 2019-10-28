@@ -1,2 +1,2 @@
 # Matty
-just another repository
+This repository will contain my changes for the OSeMOSYS code
