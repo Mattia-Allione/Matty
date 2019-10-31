@@ -1,5 +1,8 @@
+# OSeMOSYS-Pyomo_2019_10_30.py
+#
 # OSeMOSYS_2015_08_27
 # 
+#
 # Open Source energy MOdeling SYStem
 #
 # Main changes to previous version OSeMOSYS_2013_05_10
@@ -7,6 +10,10 @@
 #		- Fixed a bug related to using CapacityOfOneTechnologyUnit in constraint CAa5_TotalNewCapacity
 #		- Fixed a bug in the storage equations which caused an error if more than one day type was used 
 #		- DiscountRate is no longer technology-specific. Therefore, DiscountRateStorage is now replaced by DiscountRate.
+#
+# Main changes to previous version OSeMOSYS-Pyomo_2019_05_13:
+#		- Fixed a bug related to using CapacityOfOneTechnologyUnit
+#		- Added the storage equation
 #
 # ============================================================================
 #
@@ -24,13 +31,6 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 # ============================================================================
-#		Changes by Mattia Allione to the OSeMOSYS-Pyomo_2019_05_13.py found here:
-#		https://github.com/KTH-dESA/OSeMOSYS/tree/master/OSeMOSYS_Python
-#
-#		-Added the possibilty to include the parameter Capacity Of One Technology Unit
-#		-Added storage equations, storage constraints and storage investments
-#		-Added discounte storage cost in the total discounted cost equation.
-#
 #
 #              			#########################################
 ######################			Model Definition				#############
