@@ -596,15 +596,6 @@ def DiscountingCapitalInvestmentStorage_rule(model,r,s,y):
 
 model.DiscountingCapitalInvestmentStorage_constraint=Constraint(model.REGION, model.STORAGE, model.YEAR, rule=DiscountingCapitalInvestmentStorage_rule)
 
-#def SalvageValueStorageAtEndOfPeriod_rule(model,r,s,y):
-	#if (y+model.OperationalLifeStorage[r,s]-1)<=max(model.YEAR):
-	#return 0==model.SalvageValueStorage[r,s,y]
-	#else:
-	#	if (model.DepreciationMethod[r]==2 or model.DiscountRate[r]==0):
-	#		return model.CapitalInvestmentStorage[r,s,y]*(1-(max(model.YEAR)-y+1)/model.OperationalLifeStorage[r,s])==model.SalvageValueStorage[r,s,y]
-	#	else:
-	#		return model.CapitalInvestmentStorage[r,s,y]*(1-(((1+model.DiscountRate[r])**(max(model.YEAR)-y+1)-1)/((1+model.DiscountRate[r])**model.OperationalLifeStorage[r,s]-1)))== model.SalvageValueStorage[r,s,y]
-
 def SalvageValueStorageAtEndOfPeriod_rule(model,r,s,y):
 	if model.DepreciationMethod[r] == 1 and ((y + model.OperationalLifeStorage[r,s]-1) > max(model.YEAR)) and model.DiscountRate[r]>0:
 		return model.SalvageValueStorage[r,s,y] == model.CapitalInvestmentStorage[r,s,y]*(1-(((1+model.DiscountRate[r])**(max(model.YEAR)-y+1)-1)/((1+model.DiscountRate[r])**model.OperationalLifeStorage[r,s]-1)))
